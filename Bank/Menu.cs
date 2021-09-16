@@ -6,13 +6,8 @@ namespace Bank
 {
     enum Option
     {
-        Create_Account,
-        List_Accounts,
-        Select_Account,
-        Delete_Account,   
-        Withdraw_Funds,
-        Deposit_Funds,
-        Transfer_Funds
+        Create_Account, List_Accounts, Find_Account, Delete_Account,   
+        Withdraw_Funds, Deposit_Funds, Transfer_Funds
     }
 
     class Menu
@@ -36,7 +31,8 @@ namespace Bank
 
             foreach (var option in Enum.GetValues(typeof(Option)))
             {
-                OptionsString += Index + " - " + option + "\n";
+                string title = (option.ToString()).Replace("_", " ");
+                OptionsString += Index + " - " + title + "\n";
                 Index++;
             }
         }
@@ -64,7 +60,6 @@ namespace Bank
                 Console.WriteLine("** Invalid selection, please try again. **\n");
                 DisplayMenu();
             }
-            
         }
 
         public void HandleSelection(int MenuOption)
@@ -73,30 +68,29 @@ namespace Bank
             {
                 case 0:
                     Bank.CreateAccount();
-                    DisplayMenu();
                     break;
                 case 1:
                     Bank.ListAccounts();
-                    DisplayMenu();
                     break;
                 case 2:
-                    Console.WriteLine("Select Account Event");
-                    //Bank.
+                    Bank.FindAccount();
                     break;
                 case 3:
-                    Console.WriteLine("Delete Account Event");
+                    Bank.DeleteAccount();
                     break;
                 case 4:
                     Bank.WithdrawFunds();
-                    DisplayMenu();
                     break;
                 case 5:
-                    Console.WriteLine("Deposit Funds Event");
+                    Console.WriteLine("Deposit Funds");
                     break;
                 case 6:
-                    Console.WriteLine("Transfer Funds Event");
+                    Bank.Transfer();
                     break;
             }
+
+            DisplayMenu();
+
         }
     }
 }

@@ -15,7 +15,15 @@ namespace Bank
             //teller.Transfer(account1, account2, 50);
             //teller.Transfer(account1, account2, 100);
 
-            Menu menu = new Menu(new Bank("Lloyds Bank"));
+
+            Bank Bank = new Bank("Lloyds Bank");
+
+            Bank.CreateAccount("John Doh");
+            Bank.CreateAccount("Lisa Black");
+            Bank.CreateAccount("Britney Murphy");
+            Bank.CreateAccount("Jack Jones");
+
+            Menu menu = new Menu(Bank);
 
         }
     }

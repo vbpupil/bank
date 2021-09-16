@@ -7,7 +7,7 @@ namespace Bank
     class Account
     {
         public string Name;
-        public int Number;
+        public string Number;
         private int balance = 0;
         public int Balance
         {
@@ -18,7 +18,7 @@ namespace Bank
         public Account(string name)
         {
             Name = name;
-            Number = Name.GetHashCode();
+            Number = Name.GetHashCode().ToString().Substring(1,8);
             NewAccountOffer();
         }
 
